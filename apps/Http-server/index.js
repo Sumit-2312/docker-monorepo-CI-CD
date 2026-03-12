@@ -10,6 +10,8 @@ app.use(express.json());
 app.use(cors());
 
 try{
+    console.log("connecting to database ...");
+    console.log("Database Url: ", process.env.MONGO_URL)
    await  Connect();
    console.log("connected to database ");
    start();

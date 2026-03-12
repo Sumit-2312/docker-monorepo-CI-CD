@@ -1,0 +1,26 @@
+# Base image
+    FROM node:20-alpine
+# create /app folder in docker container and cd to that folder
+    WORKDIR /app
+
+# Copy all the necessary file over there from current project ( assume you are on root folder )
+    COPY ./package.json ./package.json
+    COPY ./package-lock.json ./package-lock.json
+    COPY ./turbo.json ./turbo.json 
+    COPY ./packages ./packages
+    COPY ./apps/websocket-server ./apps/websocket-server 
+    
+# run npm install on root folder to install all dependencies 
+    RUN npm install 
+    
+# build the project ( in case of typescript project ) 
+    # build now ( handled by turbo build script in root level folder (build as per dependency graph) )
+    # RUN npm build
+
+# Start the project ( make sure that we don't have any start script at root level initially )
+# therefore either create one OR manully run start as written in root package.json file
+    CMD ["npm", "run", "start:ws-server"]
+
+
+
+

@@ -26,3 +26,25 @@
 
 ## Start this project using Docker
     - we can run each service using docker
+    - for that create root level folder docker inside which create three Dockerfiles as ( Dockerfile.httpserver, Dockerfile.websocket, Dockerfile.frontend)
+
+### How to build and run the projects 
+    - docker build -t http-server -f docker/Dockerfile.httpServer .
+        - http-server will be the name of image
+        - (-f) forces docker to use particular file
+        - (.) indicate the context sent to docker while building ( we are sending context of complete repo )
+
+## Run individual project using Docker 
+    - Create network 
+        - docker network create my-network
+    - Mongo-Db 
+        - docker run --name mongoContainer -v my-volume:/data/db -p 27017:27017 --network my-network  mongo
+    - Http-backend 
+        - docker build -t http-server -f ./docker/Dockerfile.httpServer  .
+        - docker run -p 3000:3000 --network my-network  http-server
+    - websocker-server
+        - docker build -t websocket-server -f ./docker/Dockerfile.webSocket  .
+        - docker run -p 8080:8080 --network my-network  websocket-server
+    - React-server
+        - docker build -t react-server -f ./docker/Dockerfile.frontEnd  .
+        - docker run -p 8080:8080 --network my-network  react-server
