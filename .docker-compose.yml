@@ -1,0 +1,40 @@
+version: 20
+services:
+    mongo: 
+        container_name: mongo-server
+        image: mongo
+        ports:
+            - 27017:27017
+        volumes:
+            - mongo-db-data
+        
+    http-server:
+        build: 
+            context: .
+            dockerfile: ./docker/Dockerfile.httpServer
+        container_name: http-server
+        ports:
+            - 3000:3000
+        depends_on:
+            - mongo 
+        
+    ws-server:
+        build: 
+            context: .
+            dockerfile: ./docker/Dockerfile.webSocket 
+        container_name: ws-server 
+        ports:
+            - 8080:8080
+        depends_on:
+            - mongo 
+    
+    frontend: 
+        build: 
+            context:  .
+            dockerfile: ./docker/Dockerfile.frontEnd 
+        container_name: react-server 
+        ports:
+            - 5173: 5173 
+         
+volumes:
+    mongo-db-data: 
