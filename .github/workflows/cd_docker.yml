@@ -38,7 +38,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          file: "/docker/Dockerfile.httpServer"
+          file: "./docker/Dockerfile.httpServer"
           push: true # this tells after building the image also push to the docker hub repo
           tags: xodesumit/http-server:${{github.sha}}
       -
@@ -46,7 +46,7 @@ jobs:
         uses: docker/build-push-action@v7 
         with:
           context: .
-          file: "/docker/Dockerfile.frontEnd"
+          file: "./docker/Dockerfile.frontEnd"
           push: true
           tage: xodesumit/frontend-server:${{github.sha}}
       -
@@ -54,7 +54,7 @@ jobs:
         uses: docker/build-push-action@v7 
         with:
           context: .
-          file: "/docker/Dockerfile.webSocket"
+          file: "./docker/Dockerfile.webSocket"
           push: true
           tage: xodesumit/ws-server:${{github.sha}}
 
