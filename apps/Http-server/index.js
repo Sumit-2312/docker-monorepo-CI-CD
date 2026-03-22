@@ -23,7 +23,6 @@ try{
 function start(){
     app.get("/", async (req, res) => {
         try { 
-            
             const users = await Users.find().lean();  // 🔥 FIX
             console.log("hit therera");
             res.json({
