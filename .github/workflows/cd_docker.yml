@@ -7,21 +7,32 @@ on:
 
 jobs: 
   checkout:
-    - name: checkout the code to vm 
-      uses: actions/checkout@v4
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: checkout the code to vm 
+        uses: actions/checkout@v4
+
+
   docker-login: 
-    - name: login to docker 
-      uses: docker/login-action@v4
-      with:
+    runs-on: ubuntu-latest
+    steps: 
+      - 
+        name: login to docker 
+        uses: docker/login-action@v4
+        with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      run: echo "logged in to docker"
+          run: echo "logged in to docker"
   docker-build-push: 
-    - name: build the image and pushed to dockerhub 
-      uses: docker/build-push-action@v7
-      with:
-        push: true
-        tags: xodesumit/docker-ci-cd-app:${{github.sha}}
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: build the image and pushed to dockerhub 
+        uses: docker/build-push-action@v7
+        with:
+          push: true # this tells after building the image also push to the docker hub repo
+          tags: xodesumit/docker-ci-cd-app:${{github.sha}}
 
 ## Build the docker image ( in github's isolated machine )
 ## Push the image to docker hub 
