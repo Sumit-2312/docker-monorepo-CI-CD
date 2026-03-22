@@ -14,7 +14,7 @@
     RUN npm install 
     
 # build the project ( in case of typescript project ) 
-    # build now ( handled by turbo build script in root level folder (build as per dependency graph) )
+    # build now ( handaled by turbo build script in root level folder (build as per dependency graph) )
     # RUN npm build
 
 # Start the project ( make sure that we don't have any start script at root level initially )
