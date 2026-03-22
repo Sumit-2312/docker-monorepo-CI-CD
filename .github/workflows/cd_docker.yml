@@ -32,22 +32,22 @@ jobs:
             file: "./docker/Dockerfile.httpServer"
             push: true # this tells after building the image also push to the docker hub repo
             tags: xodesumit/http-server:${{github.sha}}
-        # -
-        #   name: build and push the frontend-server image 
-        #   uses: docker/build-push-action@v7 
-        #   with:
-        #     context: .
-        #     file: "./docker/Dockerfile.frontEnd"
-        #     push: true
-        #     tags: xodesumit/frontend-server:${{github.sha}}
-        # -
-        #   name: build and push the ws-server image 
-        #   uses: docker/build-push-action@v7 
-        #   with:
-        #     context: .
-        #     file: "./docker/Dockerfile.webSocket"
-        #     push: true
-        #     tags: xodesumit/ws-server:${{github.sha}}
+        -
+          name: build and push the frontend-server image 
+          uses: docker/build-push-action@v7 
+          with:
+            context: .
+            file: "./docker/Dockerfile.frontEnd"
+            push: true
+            tags: xodesumit/frontend-server:${{github.sha}}
+        -
+          name: build and push the ws-server image 
+          uses: docker/build-push-action@v7 
+          with:
+            context: .
+            file: "./docker/Dockerfile.webSocket"
+            push: true
+            tags: xodesumit/ws-server:${{github.sha}}
 
 ## Build the docker image ( in github's isolated machine )
 ## Push the image to docker hub 
