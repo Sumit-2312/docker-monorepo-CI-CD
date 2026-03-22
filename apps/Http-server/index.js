@@ -20,7 +20,8 @@ try{
     process.exit(1);
 }
 
-function start(){ 
+function start(){
+     
     app.get("/", async (req, res) => {
         try { 
 
