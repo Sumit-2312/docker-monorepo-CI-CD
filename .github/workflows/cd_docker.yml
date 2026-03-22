@@ -37,6 +37,7 @@ jobs:
         name: build the image and pushed to dockerhub 
         uses: docker/build-push-action@v7
         with:
+          context: .
           push: true # this tells after building the image also push to the docker hub repo
           tags: xodesumit/docker-ci-cd-app:${{github.sha}}
 
