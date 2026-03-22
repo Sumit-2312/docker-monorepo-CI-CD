@@ -26,8 +26,6 @@ function start(){
         try {
             const users = await Users.find().lean();  // 🔥 FIX
             console.log("hit therera");
-
-            
             res.json({
                 users: users
             });
