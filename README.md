@@ -46,5 +46,15 @@
         - docker build -t websocket-server -f ./docker/Dockerfile.webSocket  .
         - docker run -p 8080:8080 --network my-network  websocket-server
     - React-server
+        - point to taken care of : 
+            - we first build the project using npm run build
+            - then npm run start ( vite preview --host 0.0.0.0 ) 
+            - default port of preview is 4173 not 5173
+            - make sure to check case Sensitivity of component names ( docker container is case sensitive, macos is not)
         - docker build -t react-server -f ./docker/Dockerfile.frontEnd  .
-        - docker run -p 8080:8080 --network my-network  react-server
+        - docker run -p 4173:4173 --network my-network  react-server 
+
+## Use Docker compose
+    - Make sure you have docker installed locally
+    - docker compose build
+    - docker compose up

@@ -3,7 +3,7 @@ import {BrowserRouter , Routes, Route} from 'react-router-dom'
 import { lazy, Suspense } from 'react'
 
 const Dashboard = lazy(()=>import ('../components/Dashboard.jsx'))
-const Login = lazy(()=>import ('../components/login.jsx'))
+const Login = lazy(()=>import ('../components/Login.jsx'))
 
 function App() {
 

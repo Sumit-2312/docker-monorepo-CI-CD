@@ -1,5 +1,4 @@
-# Base image
-    FROM node:20-alpine
+    FROM node:20
 # create /app folder in docker container and cd to that folder
     WORKDIR /app
 
@@ -15,8 +14,7 @@
     
 # build the project ( in case of typescript project ) 
     # build now ( handled by turbo build script in root level folder (build as per dependency graph) )
-    # RUN npm build
-
+    RUN cd apps/React-app && npm run build
 # Start the project ( make sure that we don't have any start script at root level initially )
 # therefore either create one OR manully run start as written in root package.json file
     CMD ["npm", "run", "start:react-server"]

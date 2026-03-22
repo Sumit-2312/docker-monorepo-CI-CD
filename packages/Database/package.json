@@ -14,8 +14,10 @@
   "author": "",
   "license": "ISC",
   "type": "module",
-  "dependencies": {
-    "dotenv": "^16.0.3",
+  "peerDependencies": {
     "mongoose": "^9.3.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
   }
 }

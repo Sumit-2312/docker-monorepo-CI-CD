@@ -22,12 +22,17 @@ try{
 
 function start(){
 
-    app.get("/",async(req , res )=>{
-        const user = Users.find();
-        res.json({
-            users : user
-        });
-    })
+    app.get("/", async (req, res) => {
+        try {
+            const users = await Users.find().lean();  // 🔥 FIX
+
+            res.json({
+                users: users
+            });
+        } catch (err) {
+            res.status(500).json({ error: err.message });
+        }
+    });
 
 
     app.post("/",async(req , res )=>{
