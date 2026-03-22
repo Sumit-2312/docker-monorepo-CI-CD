@@ -21,7 +21,6 @@ try{
 }
 
 function start(){
-     
     app.get("/", async (req, res) => {
         try { 
 
