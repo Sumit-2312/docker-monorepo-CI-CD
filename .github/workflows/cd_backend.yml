@@ -26,8 +26,3 @@ jobs: # object of jobs we need to perform
 
 
 
-## Build the docker image ( in github's isolated machine )
-## Push the image to docker hub 
-## SSH into the VM 
-## pull the docker image from docker hub
-## Run the project using docker / docker-compose
