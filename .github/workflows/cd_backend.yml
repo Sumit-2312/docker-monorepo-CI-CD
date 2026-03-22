@@ -1,13 +1,13 @@
 ## Lets first understand how does CI/CD works
 
-name : Testing the working of workflows ## Human-friendly name ( optinal )
-on : # tells what will be the trigger point 
+name: Testing the working of workflows ## Human-friendly name ( optinal )
+on: # tells what will be the trigger point 
   push: 
     branches:  # array of branches 
       - main 
     paths: # array of files on changes of which you want this workflow to run ( if empty then will run if there is any change in any of the file)
       - 'apps/Http-server/**'
-      - 'packages'
+      - 'packages/**'
   pull_request: # will be trigged if pull_request is raised on main branch
     branches:
       - main
@@ -20,7 +20,7 @@ jobs: # object of jobs we need to perform
       - name: Checkout the code to vm used by github
         uses: actions/checkout@v4 # this provides the already written code to checkout code to vm
       - name: Print the message
-        run : | # | is for multio-line commands
+        run: | # | is for multio-line commands
          echo "Hi there from ci/cd pipeline"
          echo "other hello from ci/dc pipeline"
 
